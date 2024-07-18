@@ -2,6 +2,7 @@ const TelegramBot = require("node-telegram-bot-api");
 const dotenv = require("dotenv");
 const axios = require("axios");
 const fs = require("fs");
+const express = require("express");
 
 const SHOP_LIVE_LIST = [
   {
@@ -103,7 +104,12 @@ const SHOP_LIVE_LIST = [
   },
 ];
 
-const START_SHOP_TEXT_LIVE = "Привітання";
+const START_SHOP_TEXT_LIVE = "Привітання 1";
+
+const app = express();
+app.use(express.json());
+const PORT = 8000;
+app.listen(PORT, () => console.log("server started on PORT " + PORT));
 
 dotenv.config();
 
@@ -120,7 +126,7 @@ const sendInvoice = async (body) => {
     title: body.title,
     description: body.description,
     payload: JSON.stringify(body.payload),
-    prices: [{ label: body.title, amount: body.amount }],
+    prices: `[{"label": "${body.title}", "amount": "${body.amount}"}]`,
     chat_id: body.chat_id,
     provider_token: body.provider_token,
     currency: "UAH",
@@ -135,7 +141,9 @@ const sendInvoice = async (body) => {
     send_email_to_provider: body.send_email_to_provider,
   };
 
-  const endpoint = `https://api.telegram.org/bot${body.token}/sendInvoice`;
+  const endpoint = `https://api.telegram.org/bot${
+    body.token
+  }/sendInvoice?${new URLSearchParams(data).toString()}`;
 
   try {
     return await axios.post(endpoint, data);
@@ -210,8 +218,7 @@ const getUpdates = async () => {
       }
       // обробка команди /list
       if (update_data.message?.text === "/list") {
-        const shopList = JSON.parse(SHOP_LIVE_LIST || "[]");
-        for (const item of shopList) {
+        for (const item of SHOP_LIVE_LIST) {
           const body = {
             title: item.title,
             description: item.description,
