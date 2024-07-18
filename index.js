@@ -7,14 +7,15 @@ const express = require("express");
 const SHOP_LIVE_LIST = [
   {
     id: 1,
-    title: "Панна кота",
-    description: "Манго/полуниця/чіа пудинг манго/полуниця тірамісу",
+    title: "Ноутбук Apple MacBook Air 13 M1 8/256GB",
+    description:
+      "Екран 13.3 Retina (2560x1600) WQXGA, глянсовий / Apple M1 / RAM 8 ГБ / SSD 256 ГБ / Apple M1 Graphics / Wi-Fi / Bluetooth / macOS Big Sur / 1.29 кг / сірий",
     payload: {
-      title: "Панна кота",
+      title: "Ноутбук Apple MacBook Air 13 M1 8/256GB",
       billNumber: `${Math.floor(Math.random() * 1000)}`,
     },
     price: 100,
-    photo_url: "https://chudo-povar.com/images/panakota.jpg",
+    photo_url: "https://content1.rozetka.com.ua/goods/images/big/144249716.jpg",
     need_name: true,
     need_phone_number: true,
     need_email: true,
@@ -25,16 +26,15 @@ const SHOP_LIVE_LIST = [
 
   {
     id: 2,
-    title: "Круасан з лососем",
+    title: "Ноутбук Apple MacBook Pro 16 M1 Pro",
     description:
-      "Круасан з лососем та авокадо, салатом айсберг, шпинатом, медово-гірчичним соусом та крем-сиром",
+      "Екран 16.2 Liquid Retina XDR (3456x2234) 120 Гц, глянсовий / Apple M1 Pro / RAM 32 ГБ / SSD 1 ТБ / Apple M1 Pro Graphics (16 ядер) / без ОД / Wi-Fi / Bluetooth / веб-камера / macOS Monterey / 2.1 кг / сірий",
     payload: {
-      title: "Круасан з лососем",
+      title: "Ноутбук Apple MacBook Pro 16 M1 Pro",
       billNumber: `${Math.floor(Math.random() * 1000)}`,
     },
     price: 500,
-    photo_url:
-      "https://goodchef.com.ua/irpin/image/cache/catalog/products/croissant/kruasanslosose-700x700.png",
+    photo_url: "https://content2.rozetka.com.ua/goods/images/big/439131252.jpg",
     need_name: false,
     need_phone_number: true,
     need_email: true,
@@ -45,15 +45,15 @@ const SHOP_LIVE_LIST = [
 
   {
     id: 3,
-    title: "Чорний ліс",
+    title: "Ноутбук Apple MacBook Air 13.6 M2",
     description:
-      "Шоколадний хрусткий штройзель, шоколадний бісквіт, шоколадний прошарок, шоколадне кремю, вишневе компоте з лікером Єгермейстер, ванільний мус на основі білого шоколаду",
+      "Екран 13.6 Liquid Retina (2560x1664), глянсовий / Apple M2 / RAM 8 ГБ / SSD 256 ГБ / Apple M2 Graphics (8 ядер) / Wi-Fi / Bluetooth / macOS Monterey / 1.24 кг / сірий",
     payload: {
-      title: "Чорний ліс",
+      title: "Ноутбук Apple MacBook Air 13.6 M2",
       billNumber: `${Math.floor(Math.random() * 1000)}`,
     },
     price: 500,
-    photo_url: "https://i.ytimg.com/vi/tMyfG6Cr4Vs/maxresdefault.jpg",
+    photo_url: "https://content2.rozetka.com.ua/goods/images/big/269256825.jpg",
     need_name: true,
     need_phone_number: false,
     need_email: true,
@@ -64,16 +64,15 @@ const SHOP_LIVE_LIST = [
 
   {
     id: 4,
-    title: "Естерхазі",
+    title: "Ноутбук Apple MacBook Pro 16 M3 Pro",
     description:
-      "Мигдалеві коржі, шоколодно-горіхове праліне, карамельний ганаш, грецький горіх, крем на основі згущеного молока",
+      "Екран 16.2 Liquid Retina XDR (3456x2234) 120 Гц, глянсовий / Apple M3 Pro / RAM 36 ГБ / SSD 512 ГБ / Apple M3 Graphics (18 ядер) / без ОД / Wi-Fi / Bluetooth / веб-камера / macOS Sonoma / 2.14 кг / срібний",
     payload: {
-      title: "Естерхазі",
+      title: "Ноутбук Apple MacBook Pro 16 M3 Pro",
       billNumber: `${Math.floor(Math.random() * 1000)}`,
     },
     price: 500,
-    photo_url:
-      "https://lukas-sweet.shop/image/cache/catalog/tovari/tort/-%D0%BB%D1%83%D0%BA%D0%B0%D1%81-1000x1000.jpg",
+    photo_url: "https://content2.rozetka.com.ua/goods/images/big/377405278.jpg",
     need_name: true,
     need_phone_number: true,
     need_email: false,
@@ -81,35 +80,26 @@ const SHOP_LIVE_LIST = [
     send_phone_number_to_provider: true,
     send_email_to_provider: false,
   },
-
-  {
-    id: 5,
-    title: "Чізкейк карамельний",
-    description:
-      "Пісочна основа, сир Філадельфія, сир Маскарпоне, карамель власного приготування",
-    payload: {
-      title: "Чізкейк карамельний",
-      billNumber: `${Math.floor(
-        Math.random() * 1000
-      )},"description": "Пісочна основа, сир Філадельфія, сир Маскарпоне, карамель власного приготування"`,
-    },
-    price: 500,
-    photo_url: "https://i.ytimg.com/vi/krbt9WinBzw/maxresdefault.jpg",
-    need_name: true,
-    need_phone_number: true,
-    need_email: true,
-    need_shipping_address: false,
-    send_phone_number_to_provider: true,
-    send_email_to_provider: true,
-  },
 ];
 
 const START_SHOP_TEXT_LIVE = "Привітання 1";
 
+// const express = require("express");
+// const app = express();
+// const port = process.env.PORT || 4000;
+
+// app.get("/", (req, res) => {
+//   res.send("Hello World!");
+// });
+
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`);
+// });
 const app = express();
 app.use(express.json());
-const PORT = 10000;
-app.listen(PORT, () => console.log("server started on PORT " + PORT));
+app.listen(process.env.PORT, () =>
+  console.log("server started on PORT " + PORT)
+);
 
 dotenv.config();
 
@@ -153,16 +143,16 @@ const sendInvoice = async (body) => {
 };
 
 const answerPreCheckoutQuery = async (token, pre_checkout_query_id, status) => {
-  console.log("answerPreCheckoutQuerySTATUS", status);
+  // console.log("answerPreCheckoutQuerySTATUS", status);
   let statusParam = "ok=True";
   if (status && status === "REJECTED") {
     statusParam =
       "ok=False&error_message=Something went wrong. Please, check your payment";
   }
-  console.log(
-    "queryAswerPCQ",
-    `https://api.telegram.org/bot${token}/answerPreCheckoutQuery?pre_checkout_query_id=${pre_checkout_query_id}&${statusParam}`
-  );
+  // console.log(
+  //   "queryAswerPCQ",
+  //   `https://api.telegram.org/bot${token}/answerPreCheckoutQuery?pre_checkout_query_id=${pre_checkout_query_id}&${statusParam}`
+  // );
   try {
     return await axios.get(
       `https://api.telegram.org/bot${token}/answerPreCheckoutQuery?pre_checkout_query_id=${pre_checkout_query_id}&${statusParam}`
@@ -196,7 +186,7 @@ const getUpdates = async () => {
     }
     if (updates.length) {
       update_data = updates[0];
-      console.log(update_data);
+      // console.log(update_data);
       log("TG_SHOP_LIVE", update_data, "INFO");
       // обробка pre_checkout_query
       if (update_data.pre_checkout_query) {
