@@ -108,7 +108,7 @@ const START_SHOP_TEXT_LIVE = "Привітання 1";
 
 const app = express();
 app.use(express.json());
-const PORT = 8000;
+const PORT = 10000;
 app.listen(PORT, () => console.log("server started on PORT " + PORT));
 
 dotenv.config();
