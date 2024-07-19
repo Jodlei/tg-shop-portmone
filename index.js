@@ -18,10 +18,10 @@ const SHOP_LIVE_LIST = [
     photo_url: "https://content1.rozetka.com.ua/goods/images/big/144249716.jpg",
     need_name: true,
     need_phone_number: true,
-    need_email: true,
-    need_shipping_address: true,
-    send_phone_number_to_provider: true,
-    send_email_to_provider: true,
+    need_email: false,
+    need_shipping_address: false,
+    send_phone_number_to_provider: false,
+    send_email_to_provider: false,
   },
 
   {
@@ -82,19 +82,9 @@ const SHOP_LIVE_LIST = [
   },
 ];
 
-const START_SHOP_TEXT_LIVE = "Привітання 1";
+const START_SHOP_TEXT_LIVE =
+  "Вітаю, тут можна протестувати роботу телеграм бота з інтегрованою оплатою через Portmone.";
 
-// const express = require("express");
-// const app = express();
-// const port = process.env.PORT || 4000;
-
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
-
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`);
-// });
 const app = express();
 app.use(express.json());
 app.listen(process.env.PORT, () =>
@@ -143,16 +133,13 @@ const sendInvoice = async (body) => {
 };
 
 const answerPreCheckoutQuery = async (token, pre_checkout_query_id, status) => {
-  // console.log("answerPreCheckoutQuerySTATUS", status);
   let statusParam = "ok=True";
+
   if (status && status === "REJECTED") {
     statusParam =
       "ok=False&error_message=Something went wrong. Please, check your payment";
   }
-  // console.log(
-  //   "queryAswerPCQ",
-  //   `https://api.telegram.org/bot${token}/answerPreCheckoutQuery?pre_checkout_query_id=${pre_checkout_query_id}&${statusParam}`
-  // );
+
   try {
     return await axios.get(
       `https://api.telegram.org/bot${token}/answerPreCheckoutQuery?pre_checkout_query_id=${pre_checkout_query_id}&${statusParam}`
@@ -184,10 +171,11 @@ const getUpdates = async () => {
     for (const update of updates) {
       update_id = update.update_id;
     }
+
     if (updates.length) {
       update_data = updates[0];
-      // console.log(update_data);
       log("TG_SHOP_LIVE", update_data, "INFO");
+
       // обробка pre_checkout_query
       if (update_data.pre_checkout_query) {
         const pre_checkout_id = update_data.pre_checkout_query.id;
@@ -199,6 +187,7 @@ const getUpdates = async () => {
           );
         }
       }
+
       // обробка команди /start
       if (update_data.message?.text === "/start") {
         await bot.sendMessage(
